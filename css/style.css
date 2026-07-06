@@ -1,11 +1,36 @@
 :root {
-  --aktasia-navy: #061936;
-  --aktasia-dark: #020b1d;
-  --aktasia-blue: #1298ff;
-  --aktasia-cyan: #63d9ff;
+  /* Primary Navy */
+  --aktasia-navy-100: #31357D;
+  --aktasia-navy-200: #1A1E62;
+  --aktasia-navy-300: #0A0D47;
+  --aktasia-navy-400: #04062D;
+  --aktasia-navy-500: #010216;
+
+  /* Primary Cyan */
+  --aktasia-cyan-100: #AAE7FE;
+  --aktasia-cyan-200: #78D9FE;
+  --aktasia-cyan-300: #4ECDFE;
+  --aktasia-cyan-400: #24C1FD;
+  --aktasia-cyan-500: #07B4F5;
+
+  /* Secondary Blue */
+  --aktasia-secondary-100: #B1BEFE;
+  --aktasia-secondary-200: #8497FE;
+  --aktasia-secondary-300: #5E77FE;
+  --aktasia-secondary-400: #3756FD;
+  --aktasia-secondary-500: #1639F7;
+
+  /* Main Usage */
+  --aktasia-dark: var(--aktasia-navy-500);
+  --aktasia-navy: var(--aktasia-navy-400);
+  --aktasia-blue: var(--aktasia-cyan-500);
+  --aktasia-cyan: var(--aktasia-cyan-300);
   --aktasia-white: #ffffff;
-  --aktasia-muted: #b8c7dc;
+  --aktasia-muted: var(--aktasia-secondary-100);
   --aktasia-border: rgba(255, 255, 255, 0.14);
+
+  --text-dark: var(--aktasia-navy-400);
+  --text-muted: #5b6b82;
 }
 
 * {
@@ -13,16 +38,27 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: #ffffff;
   color: #0b1830;
 }
 
-/* NAVBAR */
+/* LOGO */
+.brand-logo {
+  width: auto;
+  height: 42px;
+  display: block;
+}
+
+.navbar-brand {
+  padding: 0;
+}
+
+/* NAVBAR LIGHT VERSION - SUPAYA LOGO GELAP TERLIHAT */
 .aktasia-navbar {
-  padding: 18px 0;
-  background: rgba(2, 11, 29, 0.72);
-  border-bottom: 1px solid var(--aktasia-border);
+  padding: 16px 0;
+  background: var(--aktasia-cyan-400);
+  border-bottom: 1px solid rgba(4, 6, 45, 0.10);
   backdrop-filter: blur(18px);
   transition: all 0.3s ease;
   z-index: 999;
@@ -30,9 +66,44 @@ body {
 
 .aktasia-navbar.navbar-scrolled {
   padding: 10px 0;
-  background: rgba(2, 11, 29, 0.95);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 14px 40px rgba(1, 2, 22, 0.12);
 }
+
+.navbar-nav .nav-link {
+  color: rgba(4, 6, 45, 0.76);
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--aktasia-secondary-500);
+}
+
+.navbar-toggler {
+  border: 1px solid rgba(4, 6, 45, 0.14);
+  color: var(--aktasia-navy);
+  border-radius: 12px;
+  padding: 8px 11px;
+}
+
+.aktasia-dropdown {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(4, 6, 45, 0.10);
+  border-radius: 18px;
+  padding: 10px;
+  min-width: 260px;
+  box-shadow: 0 18px 45px rgba(1, 2, 22, 0.14);
+}
+
+.aktasia-dropdown .dropdown-item {
+  color: rgba(4, 6, 45, 0.78);
+}
+
+.aktasia-dropdown .dropdown-item:hover {
+  background: rgba(7, 180, 245, 0.10);
+  color: var(--aktasia-secondary-500);
+}
+
 
 /* HERO SECTION */
 .hero-section {
@@ -1873,115 +1944,162 @@ body {
     display: none;
   }
 }
-
-/* BRAND */
-.navbar-brand {
-  color: var(--aktasia-white);
-  text-decoration: none;
+/* AKTASIA PALETTE OVERRIDE */
+.hero-section,
+.framework-section,
+.consultation-section {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(7, 180, 245, 0.28), transparent 32%),
+    radial-gradient(circle at 80% 20%, rgba(94, 119, 254, 0.20), transparent 30%),
+    linear-gradient(
+      135deg,
+      var(--aktasia-navy-500) 0%,
+      var(--aktasia-navy-400) 52%,
+      var(--aktasia-navy-200) 100%
+    );
 }
 
-.navbar-brand:hover {
-  color: var(--aktasia-white);
+.problem-bottom,
+.why-main-card,
+.about-main-box,
+.faq-cta {
+  background:
+    radial-gradient(circle at top right, rgba(78, 205, 254, 0.16), transparent 34%),
+    linear-gradient(
+      135deg,
+      var(--aktasia-navy-400),
+      var(--aktasia-navy-200)
+    );
 }
 
-.aktasia-logo-mark {
-  width: 38px;
-  height: 38px;
-  border: 2px solid var(--aktasia-white);
-  border-radius: 10px;
-  transform: rotate(45deg);
+.service-card-highlight {
+  background:
+    radial-gradient(circle at top right, rgba(78, 205, 254, 0.18), transparent 34%),
+    linear-gradient(
+      145deg,
+      var(--aktasia-navy-400),
+      var(--aktasia-navy-200)
+    );
+  border-color: rgba(78, 205, 254, 0.28);
+}
+
+/* FIX TEXT CARD GELAP */
+.service-card.service-card-highlight h3 {
+  color: #ffffff;
+}
+
+.service-card.service-card-highlight p,
+.service-card.service-card-highlight .service-list li {
+  color: var(--aktasia-secondary-100);
+}
+
+.service-card.service-card-highlight .service-number {
+  color: #ffffff;
+}
+
+.service-card.service-card-highlight .service-link {
+  color: var(--aktasia-cyan-200);
+}
+
+/* FOOTER LOGO */
+.footer-logo-box {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  position: relative;
+  padding: 12px 16px;
+  border-radius: 18px;
+  background: #ffffff;
 }
 
-.aktasia-logo-mark span {
-  width: 9px;
-  height: 9px;
-  background: var(--aktasia-cyan);
-  border-radius: 50%;
+.footer-logo {
+  width: auto;
+  height: 42px;
   display: block;
-  box-shadow: 0 0 18px rgba(99, 217, 255, 0.9);
 }
 
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
+/* MOBILE LOGO */
+@media (max-width: 575px) {
+  .brand-logo {
+    height: 34px;
+  }
+
+  .footer-logo {
+    height: 36px;
+  }
 }
 
-.brand-text strong {
-  font-size: 1.35rem;
-  letter-spacing: 0.08em;
-  font-weight: 800;
+
+
+/* Body tetap boleh pakai font default */
+body {
+  background: #ffffff;
+  color: var(--text-dark);
 }
 
-.brand-text small {
-  font-size: 0.72rem;
-  color: var(--aktasia-cyan);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+/* Navbar final */
+.aktasia-navbar {
+  padding: 16px 0;
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-bottom: 1px solid rgba(4, 6, 45, 0.10) !important;
+  backdrop-filter: blur(18px);
 }
 
-/* MENU */
+.aktasia-navbar.navbar-scrolled {
+  padding: 10px 0;
+  background: rgba(255, 255, 255, 0.98) !important;
+  box-shadow: 0 14px 40px rgba(1, 2, 22, 0.12);
+}
+
+/* Logo */
+.brand-logo {
+  width: auto;
+  height: 42px;
+  display: block;
+}
+
+.navbar-brand {
+  padding: 0;
+}
+
+/* Menu navbar */
 .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(4, 6, 45, 0.78) !important;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 10px 14px;
   transition: all 0.25s ease;
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-  color: var(--aktasia-cyan);
+  color: var(--aktasia-secondary-500) !important;
 }
 
-/* DROPDOWN */
+/* Dropdown */
 .aktasia-dropdown {
-  background: rgba(3, 18, 43, 0.98);
-  border: 1px solid var(--aktasia-border);
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 1px solid rgba(4, 6, 45, 0.10) !important;
   border-radius: 18px;
   padding: 10px;
   min-width: 260px;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 18px 45px rgba(1, 2, 22, 0.14) !important;
 }
 
 .aktasia-dropdown .dropdown-item {
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(4, 6, 45, 0.78) !important;
   border-radius: 12px;
   padding: 10px 14px;
   font-size: 0.92rem;
 }
 
 .aktasia-dropdown .dropdown-item:hover {
-  background: rgba(18, 152, 255, 0.16);
-  color: var(--aktasia-cyan);
+  background: rgba(7, 180, 245, 0.10) !important;
+  color: var(--aktasia-secondary-500) !important;
 }
 
-/* CTA BUTTON */
-.btn-aktasia {
-  background: linear-gradient(135deg, var(--aktasia-blue), var(--aktasia-cyan));
-  color: var(--aktasia-dark);
-  border: none;
-  border-radius: 999px;
-  padding: 11px 22px;
-  font-weight: 700;
-  box-shadow: 0 12px 32px rgba(18, 152, 255, 0.28);
-  transition: all 0.25s ease;
-}
-
-.btn-aktasia:hover {
-  color: var(--aktasia-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(99, 217, 255, 0.35);
-}
-
-/* MOBILE */
+/* Mobile navbar */
 .navbar-toggler {
-  border: 1px solid var(--aktasia-border);
-  color: var(--aktasia-white);
+  border: 1px solid rgba(4, 6, 45, 0.18) !important;
+  color: var(--aktasia-navy-400) !important;
   border-radius: 12px;
   padding: 8px 11px;
 }
@@ -1991,6 +2109,7 @@ body {
 }
 
 .navbar-toggler i {
+  color: var(--aktasia-navy-400);
   font-size: 1.5rem;
 }
 
@@ -1998,71 +2117,74 @@ body {
   .navbar-collapse {
     margin-top: 16px;
     padding: 18px;
-    background: rgba(3, 18, 43, 0.98);
-    border: 1px solid var(--aktasia-border);
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 1px solid rgba(4, 6, 45, 0.10) !important;
     border-radius: 22px;
+    box-shadow: 0 18px 45px rgba(1, 2, 22, 0.12);
   }
 
   .navbar-nav .nav-link {
+    color: rgba(4, 6, 45, 0.78) !important;
     padding: 12px 4px;
   }
-
-  .aktasia-dropdown {
-    box-shadow: none;
-    border-radius: 14px;
-    margin-top: 6px;
-  }
 }
 
-/* DUMMY SECTION */
-.section-placeholder {
-  min-height: 80vh;
-  padding: 140px 0 90px;
-  display: flex;
-  align-items: center;
-}
-
-.section-dark {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(18, 152, 255, 0.28), transparent 32%),
-    radial-gradient(circle at 80% 30%, rgba(99, 217, 255, 0.18), transparent 28%),
-    linear-gradient(135deg, #020b1d 0%, #061936 55%, #0b2d5e 100%);
-  color: var(--aktasia-white);
-}
-
-.section-soft {
-  background: #f4f8ff;
-}
-
-.eyebrow {
-  display: inline-block;
-  color: var(--aktasia-cyan);
+/* Button final */
+.btn-aktasia {
+  background: linear-gradient(135deg, var(--aktasia-cyan-500), var(--aktasia-secondary-500)) !important;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 22px;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 18px;
+  box-shadow: 0 12px 32px rgba(7, 180, 245, 0.28);
+  transition: all 0.25s ease;
 }
 
-.section-placeholder h1 {
-  max-width: 760px;
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  font-weight: 800;
-  line-height: 1.05;
+.btn-aktasia:hover {
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(22, 57, 247, 0.28);
 }
 
-.section-placeholder p {
-  max-width: 620px;
-  color: var(--aktasia-muted);
-  font-size: 1.1rem;
-  margin-top: 18px;
-}
-
-.section-placeholder h2 {
-  font-weight: 800;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-}
-
+/* Card gelap */
 .service-card.service-card-highlight h3 {
-  color: var(--aktasia-cyan);
+  color: #ffffff !important;
+}
+
+.service-card.service-card-highlight p,
+.service-card.service-card-highlight .service-list li {
+  color: var(--aktasia-secondary-100) !important;
+}
+
+.service-card.service-card-highlight .service-number {
+  color: #ffffff !important;
+}
+
+.service-card.service-card-highlight .service-link {
+  color: var(--aktasia-cyan-200) !important;
+}
+
+/* Poppins untuk subjudul dan teks pendukung */
+.section-badge,
+.section-title,
+.section-description,
+.hero-badge,
+.hero-section p,
+.problem-card h3,
+.problem-card p,
+.service-card h3,
+.service-card p,
+.service-list li,
+.framework-content h3,
+.framework-content p,
+.why-card h3,
+.why-card p,
+.about-point h3,
+.about-point p,
+.consultation-option h3,
+.consultation-option p,
+.faq-accordion .accordion-button,
+.faq-accordion .accordion-body {
+  font-family: "Poppins", sans-serif !important;
 }
