@@ -13,8 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Link WhatsApp otomatis
   whatsappButtons.forEach(function (button) {
     const customMessage = button.getAttribute('data-wa-message') || whatsappMessage;
+    const customNumber = button.getAttribute('data-wa-number') || whatsappNumber;
 
-    button.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(customMessage)}`;
+    button.href = `https://wa.me/${customNumber}?text=${encodeURIComponent(customMessage)}`;
     button.target = '_blank';
     button.rel = 'noopener';
   });
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
   const currentYear = document.getElementById('currentYear');
 
   if (currentYear) {
